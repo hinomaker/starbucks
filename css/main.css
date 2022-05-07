@@ -1,0 +1,1027 @@
+/* COMMON */
+body{
+  /* 완벽한 검정색은 조금 촌스럽, 그래서 이 사이트에서는 컬러 부분에 어두운 회색을 추가하고 이 어두운 회색의 값은 #333, 그래서 완전 검정보단 검정인가 회색인가
+  어두운 회색 추가 */
+  /* 우리의 사이트는 폰트 사이증가 body에서 16px로 시작한다는것을 명시,  */
+  /* 글자의 두께는 100~900까지 일반적으로 400을 쓰겠다고 명시
+  그리고 line height는 별도의 단위 없이 1.4로 명시하면 기본 글꼴크기인 16px의 1.4배의 줄높이 크기를 가지면서 첫번쨰 줄, 두번째 줄 여러줄이 될 경우 사용자에게 
+  너무 답답해 보이지 않을 정도의 행간을 제공한다. 통상적으로 1.4배 정도를 사용자가 글자를 읽는데 불편함이 없는 줄 높이로 판단
+  line height의 경우 최적의 줄 높이가 다를 수 있다
+   */
+  color:#333;
+  font-size:16px;
+  font-weight: 400;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+img{
+  display: block;
+  /* 이미지는 더 이상 글자 취급이 아닌 이제 하나의 상자, layout으로 취급하겠다는 의미, 수정방법은 단순, 이 프로젝트에서 모든 이미지는 블록 요소로 사용 */
+}
+
+a{
+  text-decoration:none;
+}
+
+.inner{
+  width:1100px;
+  margin:0 auto;
+  position: relative;
+}
+
+.btn{
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  transition: .4s;  
+}
+
+.btn:hover{
+  background-color: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse{
+  background-color: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse:hover{
+  background-color: transparent;
+  color: #333;
+}
+
+.btn.btn--brown{
+  color: #592B18;
+}
+
+.btn.btn--brown:hover{
+  background-color: #592B18;
+  color: #fff;
+}
+
+.btn.btn--gold{
+  /* //background-color: #D9AA8A; */
+  color: #D9AA8A;
+}
+
+.btn.btn--gold:hover{
+  background-color: #D9AA8A;
+  color: #fff;
+}
+
+.btn.btn--white{
+  /* background-color: #fff; */
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn.btn--white:hover{
+  background-color: #fff;
+  color:#333;
+}
+
+.back-to-position{
+  opacity: 0;
+  transition: 1s;
+}
+
+.back-to-position.to-right{
+  transform: translateX(-150px);
+}
+
+.back-to-position.to-left{
+  transform: translateX(150px);
+}
+
+.show .back-to-position{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.show .back-to-position.delay-0{
+  transition-delay: 0s;
+}
+.show .back-to-position.delay-1{
+  transition-delay: .3s;
+}
+.show .back-to-position.delay-2{
+  transition-delay: .6s;
+}
+.show .back-to-position.delay-3{
+  transition-delay: .9s;
+}
+
+/*header css*/
+header{
+  width:100%;
+  top: 0;
+  position: fixed;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  z-index: 9;
+}
+
+
+/* 헤더의 바로 다음 자식 클래스 이름이 inner인 얘의 height가 120px로 주게 하기 위해 >기호를 줌 */
+header > .inner{
+  height: 120px;
+}
+header .logo{
+  height:75px;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  margin:auto; 
+  /* 마무리로 명확하게 하기 위해 정확한 위치에 있기는 하지만 이 로고는 부모 요소인 이너 기준으로 왼쪽에 붙어있다는것도 명시해주면 된다 */
+}
+
+header .sub-menu{
+  display:flex;
+  position:absolute;
+  top:10px;
+  right: 0;
+}
+
+/* 만약 앞ㅍ쪽에 상위선택자 명시 안한다면 다른 영역의 menu라는 태그의 ul을 다 대상으로 하겠지 */
+header .sub-menu ul.menu{
+  font-family: Arial, sans-serif;
+  display:flex;
+}
+
+header .sub-menu ul.menu li{
+  position:relative;
+}
+
+header .sub-menu ul.menu li::before{
+  /* 가상 요소 선택자인 before를 써서 요소의 앞에다가 뭔가를 추가하겠다 그 내용은?> */
+  content: "";
+  /* content라는 속성을 무조건 써줘야 값이 없어도 들어갈 수 있음 */
+  /* 그리고 추가로 이 before는 인라인 요소라고 했었는데 인라인 요소는 가로 세로 값 없으므로
+  layout을 block으로 주고, 가로 1, 세로 12주고 배경색 검정색으로 해서 화면에 잘 보이게 출력; */
+  width:1px;
+  height:12px;
+  background-color: #e5e5e5;
+  position:absolute;
+  top:0;
+  bottom:0;
+  margin:auto 0; 
+}
+
+header .sub-menu ul.menu li:first-child::before{
+  display:none;
+}
+
+header .sub-menu ul.menu li a{
+  /* 클릭할 숭 ㅣㅆ는 영역 여길 왜 클릭해? 특저앟 페이지로 이동하려고 */
+  font-size: 12px;
+  padding:11px 16px;
+  display:block;
+  color: #656565;
+  
+  /* 되도록 링크 영역 만들 때 그 중 하나가 눈에 보이는 이 흰색의 영역을 넓히는거
+  기본적으로 a tag는 인라인 요소이고 가로 세로 크기 지정을 못함. margin padding도요
+  그랬을 때 a tag가 inline요소긴 하지만 레이아웃 구조를 위해서 범위를 잡아 줘야 함로
+  얘를 block으로 돌림 */
+} 
+
+header .sub-menu ul.menu li a:hover{
+  color: #000;
+} 
+
+header .sub-menu .search{
+  height:34px;
+  position:relative;
+}
+
+header .sub-menu .search input{
+  background-color: #FFF;
+  color:#777;
+  width:36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing:border-box;
+  border-radius: 5px;
+  outline: none;
+  transition:width .4s;
+}
+
+header .sub-menu .search input:focus{
+  width:190px;
+  border-color: #669900;
+}
+
+header .sub-menu .search .material-icons{
+  height:24px;
+  position:absolute;
+  top:0;
+  bottom: 0;
+  margin: auto;
+  right:5px;
+  transition: .4s;
+}
+
+header .sub-menu .search.focused .material-icons{
+  opacity: 0;
+}
+
+header .main-menu{
+  display:flex;
+  position:absolute;
+  bottom:0;
+  right:0;
+  z-index: 1;
+}
+
+header .main-menu .item{
+
+}
+
+header .main-menu .item .item__name{
+  padding: 10px 20px 34px 20px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+}
+
+header .main-menu .item:hover .item__name{
+  background-color: #2c2a29;
+  color : #669900;
+  border-radius: 6px 6px 0 0;
+}
+
+header .main-menu .item .item__contents{
+  width:100%;
+  position:fixed; 
+  left: 0;
+  display:none;
+}
+
+header .main-menu .item:hover .item__contents{
+  display:block; 
+}
+
+header .main-menu .item .item__contents .contents__name{
+  background-color: #2c2a29;
+}
+
+header .main-menu .item .item__contents .contents__name > ul{
+  display:flex;
+  padding: 20px 0;
+}
+
+header .main-menu .item .item__contents .contents__name > ul > li{
+  width: 220px;
+}
+
+header .main-menu .item .item__contents .contents__name > ul > li h4{
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+header .main-menu .item .item__contents .contents__name > ul > li ul li{
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+
+header .main-menu .item .item__contents .contents__texture{
+  padding: 26px 0;
+  font-size:12px;
+  background-image: url("../images/main_menu_pattern.jpg");
+}
+
+header .main-menu .item .item__contents .contents__texture h4{
+  color:#999;
+  font-weight:700;
+}
+header .main-menu .item .item__contents .contents__texture p{
+  color:#669900;
+  margin: 4px 0 14px;
+}
+
+header .badges{
+  position: absolute;
+  top: 132px;
+  right: 13px;
+}
+
+header .badges .badge{
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+
+.visual{
+  margin-top: 120px;
+  background-image: url("../images/visual_bg.jpg");
+  background-position: center;
+}
+
+.visual .inner{
+  height: 646px;
+}
+
+.visual .title{
+  position: absolute;
+  top: 88px;
+  left: -10px;
+}
+
+.visual .title .btn{
+  position: absolute;
+  top: 259px;
+  left: 173px;
+}
+
+.visual .cup1.image{
+  position: absolute;
+  bottom: 0;
+  right: -47px;
+}
+
+.visual .cup1.text{
+  position: absolute;
+  top: 38px;
+  right: 171px;
+}
+
+.visual .cup2.image{
+  position: absolute;
+  bottom: 0;
+  right: 162px;
+}
+
+.visual .cup2.text{
+  position:absolute;
+  top: 321px;
+  right: 416px;
+}
+
+.visual .spoon{
+  position: absolute;
+  bottom: 0;
+  left: 275px;
+}
+
+.visual .fade-in{
+  opacity: 0;
+}
+
+.notice{
+
+}
+
+.notice .notice-line{
+  position: relative;
+}
+
+.notice .notice-line .bg-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #333;
+}
+
+.notice .notice-line .bg-right{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #f6f5ef;
+}
+
+.notice .notice-line .inner{
+  height: 62px;
+  display: flex;
+}
+
+.notice .notice-line .inner .inner__left{
+  width: 60%;
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.notice .notice-line .inner .inner__left h2{
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.notice .notice-line .inner .inner__left .mySwiper{
+  height: 62px;
+  flex-grow: 1;
+}
+
+.notice .notice-line .inner .inner__left .swiper-slide{
+  height: 62px;
+  display:flex;
+  align-items: center;
+}
+
+.notice .notice-line .inner .inner__left .swiper-slide a{
+  color: #fff;
+}
+
+.notice .notice-line .inner .inner__left .notice-line_more{
+  width: 62px;
+  height: 62px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice .notice-line .inner .inner__left .notice-line_more .material-icons{
+  color: #fff;
+  font-size: 30px;
+  
+}
+
+.notice .notice-line .inner .inner__right{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.notice .notice-line .inner .inner__right h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.notice .notice-line .inner .inner__right .toggle-promotion{
+  width: 62px;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice .notice-line .inner .inner__right .toggle-promotion .material-icons{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.notice .promotion{
+  position: relative;
+  height: 693px;
+  background-color: #f6f5ef;
+  transition: .4s;
+  overflow: hidden;
+}
+
+.notice .promotion.hide{
+  height: 0;
+}
+
+.notice .promotion .mySwiper{
+  position: absolute;
+  width: calc(819px*3 + 20px);
+  height: 553px;
+  top: 40px;
+  left: 50%;
+  margin-left: calc((819px*3 + 20px) / -2);
+}
+
+.notice .promotion .swiper-slide{
+  position: relative;
+  opacity: .5;
+  transition: opacity, 1s;
+}
+
+.notice .promotion .swiper-slide-active{
+  opacity: 1;
+}
+
+.notice .promotion .btn{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.notice .promotion .swiper-pagination{
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.notice .promotion .swiper-pagination-bullet{
+  background-color: transparent;
+  background-image: url("../images/promotion_slide_pager.png");
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  outline: none;
+}
+
+.notice .promotion .swiper-pagination-bullet:last-child{
+  margin-right:0;
+}
+
+.notice .promotion .swiper-pagination-bullet-active{
+  background-image: url("../images/promotion_slide_pager_on.png");
+}
+
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next{
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 300px;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+}
+
+.notice .promotion .swiper-prev:hover,
+.notice .promotion .swiper-next:hover{
+  background-color: #333;
+  color: #fff;
+}
+
+.notice .promotion .swiper-prev{
+  left: 50%;
+  margin-left: -480px;
+}
+
+.notice .promotion .swiper-next{
+  right: 50%;
+  margin-right: -480px;
+}
+
+.rewards{
+  position: relative;
+}
+
+.rewards .inner{
+  background-image: url("../images/rewards.jpg");
+  height: 241px;
+}
+
+.rewards .bg-left{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #272727;
+}
+
+.rewards .bg-right{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #d5c798;
+}
+
+.rewards .btn-group{
+  position: absolute;
+  bottom: 24px;
+  right: 0;
+  width: 230px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rewards .btn-group .sign-up{
+  width: 110px;
+  margin-right: 10px;
+}
+
+.rewards .btn-group .sign-in{
+  width: 110px;
+}
+
+.rewards .btn-group .gift{
+  margin-top: 10px;
+  flex-grow: 1;
+}
+
+.youtube{
+  position: relative;
+  background-color: royalblue;
+  height:700px;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.youtube .youtube__area{
+  position: absolute;
+  width: 1920px;
+  background-color: orange;
+  top: 50%;
+  left: 50%;
+  margin-left: calc(1920px / -2);
+  margin-top: calc((1920px*9/16) / -2);
+}
+
+.youtube .youtube__area::before{
+  content: "";
+  display: block;
+  height: 0;
+  width: 100%;
+  padding-top: 56.75%;
+}
+
+.youtube .youtube__area #player{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.youtube .youtube__cover{
+  background-image: url("../images/video_cover_pattern.png");
+  background-color: rgba(0, 0, 0, .3);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.youtube .inner{
+  height: 700px;
+}
+
+.youtube .floating1{
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+
+.youtube .floating2{
+  position: absolute;
+  top: 350px;
+  left: 150px;
+}
+
+.season-product{
+  background-image: url("../images/season_product_bg.jpg");
+}
+
+.season-product .inner{
+  height: 400px;
+}
+
+.season-product .floating3{
+  position: absolute;
+  top: -200px;
+  right: 0;
+}
+
+.season-product .text-group{
+  position: absolute;
+  top: 110px;
+  right: 100px;
+}
+
+.season-product .text-group .title{
+  margin-bottom: 10px;
+}
+
+.season-product .text-group .description{
+  margin-bottom: 15px;
+}
+
+.reserve-coffee{
+  background-image: url("../images/reserve_bg.jpg");
+}
+
+.reserve-coffee .inner{
+  height: 400px;
+}
+
+.reserve-coffee .inner .title{
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+.reserve-coffee .inner .text-group{
+  position: absolute;
+  top: 124px;
+  left: 208px;
+}
+
+.reserve-coffee .inner .product{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+.pick-your-favorite{
+  background-image: url("../images/favorite_bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.pick-your-favorite .inner{
+  padding: 110px 0;
+}
+
+.pick-your-favorite .text-group{
+  display: flex;
+  width: 362px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: 100px;
+}
+
+.pick-your-favorite .text-group .title{
+  margin-bottom: 40px;
+}
+
+.pick-your-favorite .text-group .description{
+  margin-bottom: 40px;
+}
+
+
+.reserve-store{
+  background-image: url("../images/reserve_store_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.reserve-store .inner{
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reserve-store .medal{
+  width: 334px;
+  height: 334px;
+  perspective: 600px;
+}
+
+.reserve-store .medal .front,
+.reserve-store .medal .back{
+  position: absolute;
+  width: 334px;
+  height: 334px;
+  backface-visibility: hidden;
+  transition: 1s;
+}
+
+.reserve-store .medal .front{
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal:hover .front{
+  transform: rotateY(180deg);
+}
+
+.reserve-store .medal .back{
+  transform: rotateY(-180deg);
+}
+
+.reserve-store .medal:hover .back{
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal .back .btn{
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.find-store{
+  background-image: url("../images/find_store_bg.jpg");
+}
+
+.find-store .inner{
+ height: 400px;
+}
+
+.find-store .texture1{
+  position: absolute;
+  top: 0;
+  left: 400px;
+}
+
+.find-store .texture2{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.find-store .picture{
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.5);
+}
+
+.find-store .picture1{
+  top: -60px;
+  left: 0;
+}
+
+.find-store .picture2{
+  top: 150px;
+  left: 250px;
+}
+
+.find-store .text-group{
+  position: absolute;
+  top: 120px;
+  left: 550px;
+}
+
+.find-store .text-group .title{
+  margin-bottom: 20px;
+}
+
+.find-store .text-group .description{
+  margin-bottom: 20px;
+}
+
+.awards{
+  background-color: #272727;
+}
+
+.awards .inner{
+  padding: 40px 0;
+}
+
+.awards .mySwiper{
+  width: 100%;
+  height: 40px;
+}
+
+.awards .swiper-next,
+.awards .swiper-prev{
+  width: 42px;
+  height: 42px;
+  border: 2px solid #777;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.awards .swiper-prev{
+  left: -100px;
+}
+
+.awards .swiper-next{
+  right: -100px;
+}
+
+.awards .swiper-next:hover,
+.awards .swiper-prev:hover{
+  background-color: #fff;
+  color: #333;
+}
+
+footer{
+  background-color: #272727;
+  border-top: 1px solid #333;
+}
+
+footer .inner{
+  padding: 40px 0 60px 0;
+}
+
+footer .inner .menu{
+  display: flex;
+  justify-content: center;
+}
+
+footer .inner .menu li{
+  position: relative;
+}
+
+footer .inner .menu li::before{
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -1px;
+}
+
+footer .inner .menu li:last-child:before{
+  display: none;
+}
+
+footer .inner .menu li a{
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px;
+  display: block;
+}
+
+footer .inner .menu li a.green{
+  color: #669900;
+}
+
+footer .inner .btn-group{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+footer .inner .btn-group .btn{
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+footer .inner .btn-group:last-child{
+  margin-right: 0;
+}
+
+footer .inner .info{
+  margin-top: 30px;
+  text-align: center;
+}
+
+footer .inner .info span{
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+footer .inner .info:last-child{
+  margin-right: 0px;
+}
+
+footer .inner .copyright{
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+footer .inner .logo{
+  margin: 30px auto 0;
+}
+
+#to-top{
+  width: 42px;
+  height: 42px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
